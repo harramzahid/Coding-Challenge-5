@@ -15,14 +15,22 @@ const inventory = [
 let orders = [];
 
 // Example of an order object to be added to the orders array
-let order = {
-    customerName: "Mia",
-    items: [
-        { productName: "Mocha", quantity: 1 },
-        { productName: "Latte", quantity: 2 }
-    ],
-    status: "Pending"
-};
 
-// Adding the example order to the orders array
-orders.push(order);
+//Task 3 Create a Function to Place an Order
+function placeOrder(customerName, itemsOrdered,)  {
+    itemsOrdered.forEach(item => {
+        let product = inventory.find(product => product.name === item.name);
+        if (!product || product.quantity < item.quantity) {
+            return `error: ietm ${item.name} is out of stock sorry!`
+        } else {
+            return product.quantity -= item.quantity
+        }})
+        
+    orders.push({
+        customerName,
+        items: itemsOrdered,
+        status: 'pending'
+        });
+    }
+
+//
