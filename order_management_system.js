@@ -15,13 +15,24 @@ const inventory = [
 let orders = [];
 
 // Example of an order object to be added to the orders array
+let order = {
+    customerName: 'Mia',
+    items: [
+        { productName: 'Mocha', quantity: 1 },
+        { productName: 'Latte', quantity: 2 }
+    ],
+    status: 'Pending'
+};
 
-//Task 3 Create a Function to Place an Order
+// Adding the example order to the orders array
+orders.push(order);
+
+// Task 3 Create a fucntion to place an order
 function placeOrder(customerName, itemsOrdered,)  {
     itemsOrdered.forEach(item => {
         let product = inventory.find(product => product.name === item.name);
         if (!product || product.quantity < item.quantity) {
-            return `error: ietm ${item.name} is out of stock sorry!`
+            return `error: requested item ${item.name} is unavailable, sorry!`
         } else {
             return product.quantity -= item.quantity
         }})
@@ -29,8 +40,17 @@ function placeOrder(customerName, itemsOrdered,)  {
     orders.push({
         customerName,
         items: itemsOrdered,
-        status: 'pending'
+        status: 'Pending'
         });
     }
 
-//
+// Task 4 Create a Function to Calculate Total for an Order
+function calculateOrderTotal(order) {
+    return order.productName.reduce((sum, ProductName) => {
+        const product = inventory.find(product => productName === item.name);
+        return sum + (product.price * item.quantity)
+    }, 0)
+};
+
+
+
