@@ -52,5 +52,16 @@ function calculateOrderTotal(order) {
     }, 0)
 };
 
-
-
+//Task 5 Create a Function to Mark an Order as Completed
+function completeOrder(customerName) {
+    let order = orders.find(order => order.customerName === customerName);
+    
+    if (order) {
+        // Update the order status to "Completed"
+        order.status = 'Completed';
+        console.log(`Order for ${customerName} has been marked as Completed.`);
+    } else {
+        console.error(`Error: No order found for ${customerName}.`);
+    }
+}
+//
